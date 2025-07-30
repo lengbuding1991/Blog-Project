@@ -37,8 +37,8 @@ const routes = [
   {
     path: "/regist",
     name: "RegistView",
-    component: RegistView,
-  },
+    component: RegistView
+  }
 ];
 
 const router = createRouter({
@@ -47,9 +47,18 @@ const router = createRouter({
 });
 
 router.beforeEach((to, _, next) => {
+  const token = localStorage.getItem('auth_token') || sessionStorage.getItem('auth_token');
+  const isLoggedIn = !!token;
+
+  // 如果已登录，阻止访问登录和注册页面
+  if (isLoggedIn && (to.name === 'LoginView' || to.name === 'RegistView')) {
+    next('/');
+    return;
+  }
+
+  // 检查需要认证的路由
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    const token = localStorage.getItem('auth_token') || sessionStorage.getItem('auth_token');
-    if (!token) {
+    if (!isLoggedIn) {
       next('/');
     } else {
       next();

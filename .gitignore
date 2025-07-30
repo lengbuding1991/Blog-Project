@@ -1,24 +1,56 @@
-# 忽略编译产物
+# compiled output
 /dist
+/node_modules
 /build
 
-# 忽略日志文件
+# Logs
+logs
 *.log
-logs/
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
 
-# 忽略环境配置文件
+# OS
+.DS_Store
+
+# Tests
+/coverage
+/.nyc_output
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# dotenv environment variable files
 .env
+.env.development.local
+.env.test.local
+.env.production.local
 .env.local
 
-# 忽略IDE/编辑器生成的文件
-.idea/
-.vscode/
-*.iml
+# temp directory
+.temp
+.tmp
 
-# 忽略依赖目录
-node_modules/
-vendor/
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
 
-# 忽略系统文件
-.DS_Store  # macOS
-Thumbs.db  # Windows
+# Diagnostic reports (https://nodejs.org/api/report.html)
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
